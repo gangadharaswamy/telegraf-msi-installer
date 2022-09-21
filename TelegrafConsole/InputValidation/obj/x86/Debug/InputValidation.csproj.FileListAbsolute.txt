@@ -1,0 +1,20 @@
+C:\Users\Administrator\source\repos\TelegrafConsole\InputValidation\bin\Debug\InputValidation.dll
+C:\Users\Administrator\source\repos\TelegrafConsole\InputValidation\bin\Debug\InputValidation.CA.dll
+C:\Users\Administrator\source\repos\TelegrafConsole\InputValidation\bin\Debug\InputValidation.pdb
+C:\Users\Administrator\source\repos\TelegrafConsole\InputValidation\bin\Debug\Microsoft.Deployment.WindowsInstaller.dll
+C:\Users\Administrator\source\repos\TelegrafConsole\InputValidation\bin\Debug\Microsoft.Deployment.WindowsInstaller.xml
+C:\Users\Administrator\source\repos\TelegrafConsole\InputValidation\obj\x86\Debug\InputValidation.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\TelegrafConsole\InputValidation\obj\x86\Debug\InputValidation.csproj.CopyComplete
+C:\Users\Administrator\source\repos\TelegrafConsole\InputValidation\obj\x86\Debug\InputValidation.dll
+C:\Users\Administrator\source\repos\TelegrafConsole\InputValidation\obj\x86\Debug\InputValidation.pdb
+C:\Users\Administrator\source\repos\TelegrafConsole\InputValidation\obj\x86\Debug\InputValidation.csproj.AssemblyReference.cache
+C:\Users\Administrator\Documents\Visual Studio 2019\TelegrafConsole\InputValidation\bin\Debug\InputValidation.dll
+C:\Users\Administrator\Documents\Visual Studio 2019\TelegrafConsole\InputValidation\bin\Debug\InputValidation.CA.dll
+C:\Users\Administrator\Documents\Visual Studio 2019\TelegrafConsole\InputValidation\bin\Debug\InputValidation.pdb
+C:\Users\Administrator\Documents\Visual Studio 2019\TelegrafConsole\InputValidation\bin\Debug\Microsoft.Deployment.WindowsInstaller.dll
+C:\Users\Administrator\Documents\Visual Studio 2019\TelegrafConsole\InputValidation\bin\Debug\Microsoft.Deployment.WindowsInstaller.xml
+C:\Users\Administrator\Documents\Visual Studio 2019\TelegrafConsole\InputValidation\obj\x86\Debug\InputValidation.csproj.AssemblyReference.cache
+C:\Users\Administrator\Documents\Visual Studio 2019\TelegrafConsole\InputValidation\obj\x86\Debug\InputValidation.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\Visual Studio 2019\TelegrafConsole\InputValidation\obj\x86\Debug\InputValidation.csproj.CopyComplete
+C:\Users\Administrator\Documents\Visual Studio 2019\TelegrafConsole\InputValidation\obj\x86\Debug\InputValidation.dll
+C:\Users\Administrator\Documents\Visual Studio 2019\TelegrafConsole\InputValidation\obj\x86\Debug\InputValidation.pdb

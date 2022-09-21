@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32106.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelegrafConsole", "TelegrafConsole\TelegrafConsole.csproj", "{DAD82947-9512-4AEB-A580-4362892E2599}"
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Telegraf", "Telegraf\Telegraf.wixproj", "{730BC7CD-DBBB-416D-A215-B3F2F5CB7A2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InputValidation", "InputValidation\InputValidation.csproj", "{56BB0AA5-4D8E-49BD-9FEE-6A1845716D4E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAD82947-9512-4AEB-A580-4362892E2599}.Debug|x64.ActiveCfg = Debug|x64
+		{DAD82947-9512-4AEB-A580-4362892E2599}.Debug|x64.Build.0 = Debug|x64
+		{DAD82947-9512-4AEB-A580-4362892E2599}.Debug|x86.ActiveCfg = Debug|x64
+		{DAD82947-9512-4AEB-A580-4362892E2599}.Release|x64.ActiveCfg = Release|x64
+		{DAD82947-9512-4AEB-A580-4362892E2599}.Release|x64.Build.0 = Release|x64
+		{DAD82947-9512-4AEB-A580-4362892E2599}.Release|x86.ActiveCfg = Release|x64
+		{730BC7CD-DBBB-416D-A215-B3F2F5CB7A2C}.Debug|x64.ActiveCfg = Debug|x64
+		{730BC7CD-DBBB-416D-A215-B3F2F5CB7A2C}.Debug|x86.ActiveCfg = Debug|x86
+		{730BC7CD-DBBB-416D-A215-B3F2F5CB7A2C}.Debug|x86.Build.0 = Debug|x86
+		{730BC7CD-DBBB-416D-A215-B3F2F5CB7A2C}.Release|x64.ActiveCfg = Release|x64
+		{730BC7CD-DBBB-416D-A215-B3F2F5CB7A2C}.Release|x64.Build.0 = Release|x64
+		{730BC7CD-DBBB-416D-A215-B3F2F5CB7A2C}.Release|x86.ActiveCfg = Release|x86
+		{730BC7CD-DBBB-416D-A215-B3F2F5CB7A2C}.Release|x86.Build.0 = Release|x86
+		{56BB0AA5-4D8E-49BD-9FEE-6A1845716D4E}.Debug|x64.ActiveCfg = Debug|x86
+		{56BB0AA5-4D8E-49BD-9FEE-6A1845716D4E}.Debug|x86.ActiveCfg = Debug|x86
+		{56BB0AA5-4D8E-49BD-9FEE-6A1845716D4E}.Debug|x86.Build.0 = Debug|x86
+		{56BB0AA5-4D8E-49BD-9FEE-6A1845716D4E}.Release|x64.ActiveCfg = Release|x86
+		{56BB0AA5-4D8E-49BD-9FEE-6A1845716D4E}.Release|x86.ActiveCfg = Release|x86
+		{56BB0AA5-4D8E-49BD-9FEE-6A1845716D4E}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8E51F512-9026-4988-95D7-4C2E0D896AEA}
+	EndGlobalSection
+EndGlobal

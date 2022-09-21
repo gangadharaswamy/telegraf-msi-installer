@@ -1,0 +1,14 @@
+C:\Users\Administrator\source\repos\TelegrafConsole\TelegrafConsole\bin\Debug\netcoreapp3.1\TelegrafConsole.exe
+C:\Users\Administrator\source\repos\TelegrafConsole\TelegrafConsole\bin\Debug\netcoreapp3.1\TelegrafConsole.deps.json
+C:\Users\Administrator\source\repos\TelegrafConsole\TelegrafConsole\bin\Debug\netcoreapp3.1\TelegrafConsole.runtimeconfig.json
+C:\Users\Administrator\source\repos\TelegrafConsole\TelegrafConsole\bin\Debug\netcoreapp3.1\TelegrafConsole.runtimeconfig.dev.json
+C:\Users\Administrator\source\repos\TelegrafConsole\TelegrafConsole\bin\Debug\netcoreapp3.1\TelegrafConsole.dll
+C:\Users\Administrator\source\repos\TelegrafConsole\TelegrafConsole\bin\Debug\netcoreapp3.1\TelegrafConsole.pdb
+C:\Users\Administrator\source\repos\TelegrafConsole\TelegrafConsole\obj\Debug\netcoreapp3.1\TelegrafConsole.csproj.AssemblyReference.cache
+C:\Users\Administrator\source\repos\TelegrafConsole\TelegrafConsole\obj\Debug\netcoreapp3.1\TelegrafConsole.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\source\repos\TelegrafConsole\TelegrafConsole\obj\Debug\netcoreapp3.1\TelegrafConsole.AssemblyInfoInputs.cache
+C:\Users\Administrator\source\repos\TelegrafConsole\TelegrafConsole\obj\Debug\netcoreapp3.1\TelegrafConsole.AssemblyInfo.cs
+C:\Users\Administrator\source\repos\TelegrafConsole\TelegrafConsole\obj\Debug\netcoreapp3.1\TelegrafConsole.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\TelegrafConsole\TelegrafConsole\obj\Debug\netcoreapp3.1\TelegrafConsole.dll
+C:\Users\Administrator\source\repos\TelegrafConsole\TelegrafConsole\obj\Debug\netcoreapp3.1\TelegrafConsole.pdb
+C:\Users\Administrator\source\repos\TelegrafConsole\TelegrafConsole\obj\Debug\netcoreapp3.1\TelegrafConsole.genruntimeconfig.cache

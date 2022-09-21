@@ -1,0 +1,2 @@
+C:\Users\Administrator\Documents\Visual Studio 2019\TelegrafConsole\Telegraf\bin\Debug\en-us\wavefront-telegraf-Debug-x64-setup.msi
+C:\Users\Administrator\Documents\Visual Studio 2019\TelegrafConsole\Telegraf\bin\Debug\en-us\wavefront-telegraf-Debug-x64-setup.wixpdb

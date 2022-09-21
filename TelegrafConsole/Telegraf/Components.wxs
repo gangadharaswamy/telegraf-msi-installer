@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+      <ComponentRef Id="ConfigFile" />
+      <ComponentRef Id="TelegrafBinary" />
+    </ComponentGroup>
+
+    <DirectoryRef Id="INSTALLFOLDER" FileSource="$(var.ProjectDir)\Assets\" >
+      <Component Id="ConfigFile" >
+        <!-- Guid="{DF30125A-2E04-48DF-9B5A-5DB71B22ECA5}"> -->
+        <File Id="CopyConfigFile" Name="telegraf.conf" KeyPath="yes" />
+        <!--<RemoveFile Id="CopyConfigFile" Name="telegraf.conf" On="uninstall" />-->
+      </Component>
+
+      <Component Id="TelegrafBinary" >
+        <File Id="CopyBinaryFile" Name="telegraf.exe" KeyPath="yes" />
+        <RemoveFile Id="CopyBinary" Name="telegraf.exe" On="uninstall" />
+        <ServiceInstall Id="TelegrafInstall" Name="Telegraf" DisplayName="Telegraf Data Collector Service"
+                        Description="Collects data from a series of plugins and publishes it to Wavefront plugin."
+                        Arguments="--config &quot;C:\Program Files\Telegraf\telegraf.conf&quot; --config-directory &quot;C:\Program Files\Telegraf\telegraf.d&quot;"
+                        ErrorControl="normal" Start="auto" Type="ownProcess" />
+        <ServiceControl Id="TelegrafControl" Name="Telegraf" Start="install" Stop="both" Remove="both" Wait="yes" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+
+  <Fragment>
+    <UI Id="WixUI_InstallDir_Telegraf">
+            <TextStyle Id="WixUI_Font_Normal" FaceName="Tahoma" Size="8" />
+            <TextStyle Id="WixUI_Font_Bigger" FaceName="Tahoma" Size="12" />
+            <TextStyle Id="WixUI_Font_Title" FaceName="Tahoma" Size="9" Bold="yes" />
+
+            <Property Id="DefaultUIFont" Value="WixUI_Font_Normal" />
+            <Property Id="WixUI_Mode" Value="InstallDir" />
+
+            <DialogRef Id="BrowseDlg" />
+            <DialogRef Id="DiskCostDlg" />
+            <DialogRef Id="ErrorDlg" />
+            <DialogRef Id="FatalError" />
+            <DialogRef Id="FilesInUse" />
+            <DialogRef Id="MsiRMFilesInUse" />
+            <DialogRef Id="PrepareDlg" />
+            <DialogRef Id="ProgressDlg" />
+            <DialogRef Id="ResumeDlg" />
+            <DialogRef Id="UserExit" />
+            
+            <Publish Dialog="BrowseDlg" Control="OK" Event="DoAction" Value="WixUIValidatePath" Order="3">1</Publish>
+            <Publish Dialog="BrowseDlg" Control="OK" Event="SpawnDialog" Value="InvalidDirDlg" Order="4"><![CDATA[NOT WIXUI_DONTVALIDATEPATH AND WIXUI_INSTALLDIR_VALID<>"1"]]></Publish>
+
+            <Publish Dialog="ExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999">1</Publish>
+
+            <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="LicenseAgreementDlg">NOT Installed</Publish>
+            <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg">Installed AND PATCH</Publish>
+
+            <Publish Dialog="LicenseAgreementDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg">1</Publish>
+            <Publish Dialog="LicenseAgreementDlg" Control="Next" Event="NewDialog" Value="TelegrafConfig">LicenseAccepted = "1"</Publish>
+            <!--<Publish Dialog="LicenseAgreementDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg">LicenseAccepted = "1"</Publish>-->
+
+            <!--<Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="LicenseAgreementDlg">1</Publish>
+            <Publish Dialog="InstallDirDlg" Control="Next" Event="SetTargetPath" Value="[WIXUI_INSTALLDIR]" Order="1">1</Publish>
+            <Publish Dialog="InstallDirDlg" Control="Next" Event="DoAction" Value="WixUIValidatePath" Order="2">NOT WIXUI_DONTVALIDATEPATH</Publish>
+            <Publish Dialog="InstallDirDlg" Control="Next" Event="SpawnDialog" Value="InvalidDirDlg" Order="3"><![CDATA[NOT WIXUI_DONTVALIDATEPATH AND WIXUI_INSTALLDIR_VALID<>"1"]]></Publish>
+            <Publish Dialog="InstallDirDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg" Order="4">WIXUI_DONTVALIDATEPATH OR WIXUI_INSTALLDIR_VALID="1"</Publish>
+            <Publish Dialog="InstallDirDlg" Control="ChangeFolder" Property="_BrowseProperty" Value="[WIXUI_INSTALLDIR]" Order="1">1</Publish>
+            <Publish Dialog="InstallDirDlg" Control="ChangeFolder" Event="SpawnDialog" Value="BrowseDlg" Order="2">1</Publish>-->
+
+            <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="TelegrafConfig" Order="1">NOT Installed</Publish>
+            <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="MaintenanceTypeDlg" Order="2">Installed AND NOT PATCH</Publish>
+            <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2">Installed AND PATCH</Publish>
+
+            <Publish Dialog="MaintenanceWelcomeDlg" Control="Next" Event="NewDialog" Value="MaintenanceTypeDlg">1</Publish>
+
+            <Publish Dialog="MaintenanceTypeDlg" Control="RepairButton" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
+            <Publish Dialog="MaintenanceTypeDlg" Control="RemoveButton" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
+            <Publish Dialog="MaintenanceTypeDlg" Control="Back" Event="NewDialog" Value="MaintenanceWelcomeDlg">1</Publish>
+
+            <Property Id="ARPNOMODIFY" Value="1" />
+      <!--<InstallUISequence>
+        <Show Dialog="WelcomeDlg" Before="LicenseAgreementDlg">Installed AND PATCH</Show>
+        <Show Dialog="LicenseAgreementDlg" Before="TelegrafConfig">NOT Installed</Show>
+        <Show Dialog="TelegrafConfig" Before="ProgressDlg">NOT Installed</Show>
+      </InstallUISequence>-->
+
+    </UI>
+  </Fragment>
+
+  <!--<Fragment>
+      <UI Id="WixUI_Minimal_Telegraf">
+          <TextStyle Id="WixUI_Font_Normal" FaceName="Tahoma" Size="8" />
+          <TextStyle Id="WixUI_Font_Bigger" FaceName="Tahoma" Size="12" />
+          <TextStyle Id="WixUI_Font_Title" FaceName="Tahoma" Size="9" Bold="yes" />
+
+          <Property Id="DefaultUIFont" Value="WixUI_Font_Normal" />
+          <Property Id="WixUI_Mode" Value="Minimal" />
+
+          <DialogRef Id="ErrorDlg" />
+          <DialogRef Id="FatalError" />
+          <DialogRef Id="FilesInUse" />
+          <DialogRef Id="MsiRMFilesInUse" />
+          <DialogRef Id="PrepareDlg" />
+          <DialogRef Id="ProgressDlg" />
+          <DialogRef Id="ResumeDlg" />
+          <DialogRef Id="UserExit" />
+          <DialogRef Id="WelcomeDlg" />
+          <DialogRef Id="WelcomeEulaDlg" />
+
+          <Publish Dialog="ExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999">1</Publish>
+
+          <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="MaintenanceTypeDlg">1</Publish>
+
+          <Publish Dialog="MaintenanceWelcomeDlg" Control="Next" Event="NewDialog" Value="MaintenanceTypeDlg">1</Publish>
+
+          <Publish Dialog="MaintenanceTypeDlg" Control="RepairButton" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
+          <Publish Dialog="MaintenanceTypeDlg" Control="RemoveButton" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
+          <Publish Dialog="MaintenanceTypeDlg" Control="Back" Event="NewDialog" Value="MaintenanceWelcomeDlg">1</Publish>
+
+          <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg">Installed AND PATCH</Publish>
+          <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2">Installed AND PATCH</Publish>
+
+          <InstallUISequence>
+              <Show Dialog="WelcomeDlg" Before="WelcomeEulaDlg">Installed AND PATCH</Show>
+              <Show Dialog="WelcomeEulaDlg" Before="ProgressDlg">NOT Installed</Show>
+          </InstallUISequence>
+
+          <Property Id="ARPNOMODIFY" Value="1" />
+      </UI>
+
+      <UIRef Id="WixUI_Common" />
+  </Fragment>-->
+</Wix>

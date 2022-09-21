@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="en-us" xmlns="http://schemas.microsoft.com/wix/2006/localization">
+  
+	<String Id="ProductName">Telegraf</String>
+
+  <String Id="Company">VMware, Inc.</String>
+
+  <String Id="Description">Telegraf installer for Windows platform</String>
+
+  <String Id="DowngradeErrorMessage">A newer version of Telegraf is already installed.</String>
+
+  <String Id="SupportURL">https://community.pivotal.io/</String>
+
+  <!--<String Id="DisplayName">Telegraf version 1.21.2</String>
+
+  <String Id="DisplayVersion">1.21.2</String>-->
+
+  <String Id="HelpLink">https://tanzu.vmware.com/observability</String>
+
+  <String Id="UpgradeGUID">{EB41027C-828B-4425-BC5F-E28CFCFA16BF}</String>
+  
+  <String Id="UpgradeExeGUID">{EB41027C-828B-4425-BC5F-E28CFCFA16BF}_is1</String>
+  
+</WixLocalization>

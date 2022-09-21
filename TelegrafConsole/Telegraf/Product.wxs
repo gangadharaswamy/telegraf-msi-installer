@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+  <!-- Give product a unique ID per -->
+  <!-- Commenting to test upgrade
+  <?define ProductCode = "{E73BFFBF-1F7A-4E4F-91C6-3EBC3F888B05}" ?>
+  -->
+  
+  <!-- Give a product upgrade code, always remains same -->
+  <?define UpgradeCode = "{EB41027C-828B-4425-BC5F-E28CFCFA16BF}"?>
+  
+  <!-- Define main product -->
+	<Product Id="*"
+    Name="!(loc.ProductName)"
+    Language="1033"
+    Version="$(var.BuildVersion)"
+    Manufacturer="!(loc.Company)"
+    UpgradeCode="$(var.UpgradeCode)">
+    
+    <!-- Define package details -->
+		<Package InstallerVersion="200"
+             Compressed="yes"
+             InstallScope="perMachine"
+             Manufacturer="!(loc.Company)"
+             Description="!(loc.Description)"
+             />
+
+    <!-- Downgrade error message -->
+		<MajorUpgrade
+      Schedule="afterInstallValidate"
+      DowngradeErrorMessage="!(loc.DowngradeErrorMessage)" />
+    
+    <!-- Embed .cab file into .msi file -->
+		<MediaTemplate EmbedCab="yes" />
+
+    <!-- Define application icon -->
+    <Icon Id="icon.ico" SourceFile="$(var.ProjectDir)\wavefront.ico" />
+    
+    <!-- Use wavefront icon for installer (shows in Add/Remove programs)  -->
+    <Property Id="ARPPRODUCTICON">icon.ico</Property>
+    
+    <!-- Support URL -->
+    <Property Id="ARPURLINFOABOUT">!(loc.SupportURL)</Property>
+
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+    <UIRef Id="WixUI_InstallDir"/>
+
+    <!--<UIRef Id="WixUI_FeatureTree"/>-->
+    <!-- Create a basic UI for the installer -->
+    <!--<UIRef Id="WixUI_Minimal"/>-->
+    <UI Id="ProxyConfig" />
+
+    <!--<UIRef Id="TelegrafConfigUI"/>
+    <Property Id="Cancel">CancelBtn</Property>-->
+
+    <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\Assets\License.rtf" />
+
+    <Property Id="HOST" Value="localhost" />
+    <Property Id="PORT" Value="2878" />
+    
+    <Binary Id="GetData" SourceFile="$(var.InputValidation.ProjectDir)\bin\Debug\InputValidation.CA.dll" />
+    <CustomAction Id="GetArgValues" BinaryKey="GetData" DllEntry="ValidateInput" Execute="immediate" Return="ignore" Impersonate="no" />
+    
+    <InstallExecuteSequence>
+      <!-- After was "CostFinalize" earlier -->
+      <Custom Action="GetArgValues" After="InstallInitialize">NOT Installed AND NOT PATCH</Custom>
+    </InstallExecuteSequence>
+
+    <!-- Enable command line arguments for installer -->
+    <!--<Property Id="WixQuietExec64CmdLine" Value='"[INSTALLFOLDER]telegraf.exe" HOST PORT' />-->
+    
+    <!-- Background and Banner images
+    <WixVariable Id="WixUIDialogBmp" Value="$(var.ProjectDir)\Assets\Background.bmp" />
+    <WixVariable Id="WixUIBannerBmp" Value="$(var.ProjectDir)\Assets\Banner.bmp" />
+    -->
+    
+    <!-- Define Components, shortcuts, files, etc for installer -->
+		<Feature Id="ProductFeature" Title="Telegraf" Level="1">
+      
+			<ComponentGroupRef Id="ProductComponents" />
+      
+		</Feature>
+
+    <Feature Id="RegistryUpdate" Title="TelegrafReg" Level="1">
+      <ComponentRef Id="RegistryEntries" />
+    </Feature>
+    
+    <DirectoryRef Id="TARGETDIR">
+      <Component Id="RegistryEntries" Guid="!(loc.UpgradeGUID)">
+        <RegistryKey Root="HKLM"
+                     Key="SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\!(loc.UpgradeGUID)">
+                     <!--Action="createAndRemoveOnUninstall">-->
+          <!--<RegistryValue Type="integer" Name="SomeIntegerValue" Value="1" KeyPath="yes"/>-->
+          <RegistryValue Type="string" Name="DisplayName" Value="!(loc.ProductName) $(var.BuildVersion)" />
+          <RegistryValue Type="string" Name="DisplayVersion" Value="$(var.BuildVersion)" KeyPath="yes" />
+          <RegistryValue Type="string" Name="Publisher" Value="!(loc.Company)" />
+          <RegistryValue Type="string" Name="HelpLink" Value="!(loc.HelpLink)" />
+        </RegistryKey>
+      </Component>
+    </DirectoryRef>
+    <!--<Property Id="TELEGRAFEXE">
+      <RegistrySearch Id="TelegrafExe"
+                      Root="HKLM"
+                      Key="SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\!(loc.UpgradeGUID)_is1"
+                      Name="Uninstall"
+                      Type="directory"
+                      Win64="yes" />
+    </Property>
+    <Condition Message="The telegraf.exe is found and replaced by telegraf $(var.BuildVersion) MSI package">
+      <![CDATA[Installed AND TELEGRAFEXE]]>
+    </Condition>-->
+
+  </Product>
+
+</Wix>

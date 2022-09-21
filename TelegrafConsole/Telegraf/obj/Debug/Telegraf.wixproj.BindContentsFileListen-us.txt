@@ -1,0 +1,2 @@
+C:\Users\Administrator\Documents\Visual Studio 2019\TelegrafConsole\Telegraf\\Assets\telegraf.exe
+C:\Users\Administrator\Documents\Visual Studio 2019\TelegrafConsole\Telegraf\\Assets\telegraf.conf

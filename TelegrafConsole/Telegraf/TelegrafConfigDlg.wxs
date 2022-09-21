@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <!--<Property Id="HOST" Value="localhost" Admin="yes" />
+    <Property Id="PORT" Value="2878" Admin="yes" />-->
+    
+    <UI Id="TelegrafConfigUI">
+      <Dialog Id="TelegrafConfig" Width="400" Height="275" Title="Telegraf Configuration">
+        <Control Id="headerText" Type="Text" X="140" Y="10" Width="260" Height="40" Transparent="no"
+                 Text="Telegraf Configuration" />
+        <Control Id="explanatiionText" X="140" Y="50" NoWrap="no" RightAligned="no" Transparent="yes"
+                 Text="Please enter the Wavefront Proxy Hostname/IP and Port number to configure the Telegraf. Enable the CheckBox to use the old configurations, then click Next."
+                 Type="Text" Width="260" Height="100" />
+        <Control Id="HostLabel" Type="Text" X="160" Y="120" Height="17" Width="65" Transparent="yes" Text="{\WixUI_Font_Normal}Wavefront Proxy Hostname/IP:" />
+        <Control Id="HostTextBox" Type="Edit" X="230" Y="120"   Height="17" Width="60" Property="Host" />
+
+        <Control Id="PortLabel" Type="Text" X="295" Y="120" Height="17" Width="65" Transparent="yes" Text="{\WixUI_Font_Normal}Port (default: 2878):" />
+        <Control Id="PortTextBox" Type="Edit" X="325" Y="120"   Height="17" Width="60" Property="Port" />
+        <Control Id="bottomLine" Type="Line" X="130" Y="239" Width="270" Height="1" />
+
+        <!--<Control Id="Back" Type="PushButton" Text="Back"  X="208" Y="248" Height="17" Width="60" >
+          <Publish Event="NewDialog" Value="WelcomeEulaDlg">1</Publish>
+        </Control>-->
+        <Control Id="Next" Type="PushButton" Text="Next"  X="269" Y="248" Height="17" Width="60" Default="yes">
+          <!--<Publish Property="WixUI_InstallMode" Value="Update">Installed AND PATCH</Publish>-->
+          <Publish Event="DoAction" Value="GetArgValues">1</Publish>
+          <Publish Event="EndDialog" Value="Return">1</Publish>
+        </Control>
+        <!--<Control Id="Cancel" Type="PushButton" Text="Cancel" X="330" Y="248" Height="17" Width="60" Cancel="yes">
+          --><!--<Publish Event="DoAction" Value="CleanUpAction">1</Publish>--><!--
+          <Publish Event="NewDialog" Value="CancelDlg" Order="2">1</Publish>
+        </Control>-->
+      </Dialog>
+    </UI>
+
+    <!--<InstallUISequence>
+      <Show Dialog="TelegrafConfig" Before="ProgressDlg" /> --><!-- After="WelcomeEulaDlg"--><!--
+    </InstallUISequence>-->
+
+  </Fragment>
+
+  <Fragment>
+    <CustomAction Id="TelegrafOutputConfig" BinaryKey="TelegrafConfigBinary" DllEntry="ValidateInput"  />
+  </Fragment>
+</Wix>

@@ -1,0 +1,11 @@
+obj\Debug\Product.wixobj
+obj\Debug\Telegraf.wixproj.BindContentsFileListen-us.txt
+obj\Debug\Telegraf.wixproj.BindOutputsFileListen-us.txt
+obj\Debug\Telegraf.wixproj.BindBuiltOutputsFileListen-us.txt
+obj\Debug\Components.wixobj
+obj\Debug\Directories.wixobj
+C:\Users\Administrator\source\repos\TelegrafConsole\Telegraf\bin\Debug\en-us\wavefront-telegraf-Debug-x64-setup.msi
+C:\Users\Administrator\source\repos\TelegrafConsole\Telegraf\bin\Debug\en-us\wavefront-telegraf-Debug-x64-setup.wixpdb
+obj\Debug\TelegrafConfigDlg.wixobj
+C:\Users\Administrator\Documents\Visual Studio 2019\TelegrafConsole\Telegraf\bin\Debug\en-us\wavefront-telegraf-Debug-x64-setup.msi
+C:\Users\Administrator\Documents\Visual Studio 2019\TelegrafConsole\Telegraf\bin\Debug\en-us\wavefront-telegraf-Debug-x64-setup.wixpdb
